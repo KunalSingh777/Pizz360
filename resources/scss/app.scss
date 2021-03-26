@@ -1,0 +1,53 @@
+@import './variables';
+@import '~noty/src/noty.scss';
+@import '~noty/src/themes/mint.scss';
+
+
+body{
+    font-family: 'Lato',sans-serif;
+    -webkit-font-smoothing:antialised;
+    color:$dark;
+  
+}
+
+section.hero{
+    background: $secondary;
+}
+.size{
+    background-color: $secondary;
+}
+.add-to-cart{
+    border: 2px solid #440a67;
+    color: #440a67;
+    transition: $smooth;
+    &:hover{
+        background-color: gold;
+        color: #440a67;
+        border-color: gold;
+    }
+    &:focus{
+        outline: none;
+    }
+}
+.btn-primary{
+    background-color:#440a67 ;
+}
+.btn-primary:hover{
+    color:#440a67;
+    background-color: gold;
+    border-color: gold;
+    transition: $smooth;
+}
+section.cart{
+    background-color: $secondary;
+    .amount{
+        color: #440a67;
+    }
+}
+.noty_theme__mint{
+    border-radius: 50px!important;
+    padding-left: 8px!important;
+}
+
+
+
