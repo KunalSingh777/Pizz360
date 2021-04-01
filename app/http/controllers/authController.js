@@ -7,7 +7,23 @@ function authController(){
             res.render('auth/login');
         },
         postLogin(req,res,next){
-            passport.authenticate()
+            passport.authenticate('local',(err,user,info)=>{
+                if(err){
+                    req.flash('error',info.message)
+                    return next(err)
+                }
+                if(!user){
+                    req.flash('error',info.message)
+                    return res.redirect('/login')
+                }
+                req.logIn(user,(err)=>{
+                    if(err){
+                    req.flash('error',info.message)
+                    return next(err)
+                    }
+                    return res.redirect('/')
+                })
+            })(req,res,next)
         },
         register(req,res){
             res.render('auth/register');
@@ -44,7 +60,11 @@ function authController(){
                 req.flash('error','Something went wrong')
                 return res.redirect('/register')
             })
-            console.log(req.body)
+           
+        },
+        logout(req,res){
+            req.logout()
+            return res.redirect('/login')
         }
     }
 }

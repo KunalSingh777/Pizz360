@@ -21,7 +21,7 @@ function init(passport){
         done(null,user._id)
     })
     passport.deserializeUser((id,done)=>{
-        User.findById(err,(err,user)=>{
+        User.findById(id,(err,user)=>{
             done(err,user)
         })
     })

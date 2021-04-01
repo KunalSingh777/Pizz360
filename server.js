@@ -42,7 +42,7 @@ app.use(session({
 
 //passport config
 const passportInit=require('./app/config/passport')
-
+passportInit(passport)
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -53,6 +53,7 @@ app.use(express.json())
 
 app.use((req,res,next)=>{
     res.locals.session=req.session
+    res.locals.user=req.user
     next()
 })
 //Assets
