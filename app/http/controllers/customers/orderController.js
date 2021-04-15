@@ -31,6 +31,10 @@ function orderController(){
             res.header('Cache-Control', 'no-store')
             res.render('customers/orders',{orders:orders,moment:moment})
             
+        },
+        async show(req,res){
+          const order=Order.findById(req.param.id) 
+           
         }
     }
 }
