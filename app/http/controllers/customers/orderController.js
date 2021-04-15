@@ -33,8 +33,13 @@ function orderController(){
             
         },
         async show(req,res){
-          const order=Order.findById(req.param.id) 
-           
+          const order= await Order.findById(req.params.id) 
+           //Authorize User
+           if(req.user._id.toString()===order.customerId.toString())
+           {
+                return res.render('customers/singleOrder',{order})
+           }
+           return res.redirect('/')
         }
     }
 }
